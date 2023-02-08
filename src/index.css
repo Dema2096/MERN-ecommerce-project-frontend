@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(35, 21, 82) !important;
+  color :white!important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar{
+  background-color: rgb(181, 133, 11) !important;
+}
+
+.nav-link{
+  color: black !important;
+}
+
+.navbar-brand{
+  color: black !important;
+}
+
+h1{
+  font-size : 2vh !important;
+  text-align : left !important;
+}
+.card{
+  background-color: rgb(57, 45, 99) !important;
+}
+
+.img-fluid{
+  height: 25vh !important;
+}
+
+.products{
+  width: 95vw !important;
+}
+
+p{
+  text-align: left !important
+}
+
+.linkcard{
+  text-decoration: none !important;
+  color : white !important;
+}
+
+.rating{
+  color: rgb(204, 204, 0) !important;
+}
+
+.product-table{
+  max-width: 100vw !important;
+}
+
+.delete{
+  cursor: pointer !important;
+}
+
+.admin-div{
+  width : 95vw !important;
+}
+
+.admin{
+  background-color: rgb(57, 45, 99) !important;
+}
+
+.admin li{
+  list-style-type : none !important;
+  display : inline !important;
+  margin-left : 1.8vw !important;
+  
+}
+
+.pantalla{
+  width: 95vw !important
+}
+
+@media (max-width: 1024px) {
+  .admin li{
+    list-style-type : none !important;
+    display: block !important;
+    margin-left : 1.8vw !important;
+    
+  }
+}
