@@ -5,7 +5,7 @@ export const getAllProducts = () => dispatch => {
 
     dispatch({type:"GET_PRODUCTS_REQUEST"})
 
-    axios.get("/api/products/getallproducts").then(res => {
+    axios.get("https://mern-ecommerce-app-api.onrender.com/api/products/getallproducts").then(res => {
         console.log(res)
         dispatch({type:"GET_PRODUCTS_SUCCESS",payload:res.data})
     }).catch(err => {
