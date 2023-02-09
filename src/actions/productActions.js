@@ -1,11 +1,12 @@
 import axios from "axios"
+import { URL } from "../App"
 
 
 export const getAllProducts = () => dispatch => {
 
     dispatch({type:"GET_PRODUCTS_REQUEST"})
 
-    axios.get("https://mern-ecommerce-app-api.onrender.com/api/products/getallproducts").then(res => {
+    axios.get(`${URL}/api/products/getallproducts`).then(res => {
         console.log(res)
         dispatch({type:"GET_PRODUCTS_SUCCESS",payload:res.data})
     }).catch(err => {
@@ -19,7 +20,7 @@ export const getProductById = (productid) => dispatch => {
 
     dispatch({type:"GET_PRODUCTS_BY_ID_REQUEST"})
 
-    axios.post("/api/products/getproductbyid",{productid}).then(res => {
+    axios.post(`${URL}/api/products/getproductbyid`,{productid}).then(res => {
         console.log(res)
         dispatch({type:"GET_PRODUCTS_BY_ID_SUCCESS",payload:res.data})
     }).catch(err => {
@@ -35,7 +36,7 @@ export const filterProducts = (searchKey, sort, category)=>dispatch=>{
     
     dispatch({type:"GET_PRODUCTS_REQUEST"})
 
-    axios.get("/api/products/getallproducts").then(res=>{
+    axios.get(`${URL}/api/products/getallproducts`).then(res=>{
 
         filteredProducts = res.data
 
@@ -74,7 +75,7 @@ export const addProductReview = (review, productid)=>(dispatch, getState) => {
     dispatch({type:"ADD_PRODUCT_REVIEW_REQUEST"})
     const currentUser = getState().loginReducer.currentUser
 
-    axios.post("/api/products/addreview", {review, productid, currentUser}).then(res=>{
+    axios.post(`${URL}/api/products/addreview`, {review, productid, currentUser}).then(res=>{
         console.log(res)
         dispatch({type:"ADD_PRODUCT_REVIEW_SUCCESS"})
         alert('Opinion publicada con exito')
@@ -89,7 +90,7 @@ export const addProductReview = (review, productid)=>(dispatch, getState) => {
 export const deleteProduct = (productid)=> dispatch=>{
     dispatch({type: "DELETE_PRODUCT_REQUEST"})
 
-    axios.post("/api/products/deleteproduct", {productid}).then(res=>{
+    axios.post(`${URL}/api/products/deleteproduct`, {productid}).then(res=>{
         dispatch({type: "DELETE_PRODUCT_SUCCESS", payload : res.data})
         alert("Producto eliminado con exito")
         window.location.reload()
@@ -102,7 +103,7 @@ export const deleteProduct = (productid)=> dispatch=>{
 export const addProduct =(product)=> dispatch=>{
     dispatch({type:"ADD_PRODUCT_REQUEST"})
 
-    axios.post("/api/products/addproduct", {product}).then(res=>{
+    axios.post(`${URL}/api/products/addproduct`, {product}).then(res=>{
         console.log(res)
         dispatch({type:"ADD_PRODUCT_SUCCESS"})
         setTimeout(window.location.reload(), 7000)
@@ -114,7 +115,7 @@ export const addProduct =(product)=> dispatch=>{
 export const updateProduct =(productid, updatedProduct)=> dispatch=>{
     dispatch({type:"UPDATE_PRODUCT_REQUEST"})
 
-    axios.post("/api/products/updateproduct", {productid, updatedProduct}).then(res=>{
+    axios.post(`${URL}/api/products/updateproduct`, {productid, updatedProduct}).then(res=>{
         console.log(res)
         dispatch({type:"UPDATE_PRODUCT_SUCCESS"})
         setTimeout(window.location.href="/admin/productslist", 10000)

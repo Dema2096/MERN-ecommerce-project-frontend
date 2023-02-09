@@ -17,6 +17,7 @@ import AdminProductsList from './pages/admin/AdminProductsList';
 import AdminUsersList from './pages/admin/AdminUsersList';
 import AdminEditProduct from './pages/admin/AdminEditProduct';
 
+export const URL = process.env.REACT_APP_SERVER_URL
 
 
 function App() {

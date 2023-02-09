@@ -1,9 +1,10 @@
 import axios from "axios"
+import { URL } from "../App"
 
 export const registerNewUser = (user)=>dispatch=>{
     dispatch({type:"USER_REGISTER_REQUEST"})
 
-    axios.post("/api/users/register", user)
+    axios.post(`${URL}/api/users/register`, user)
     .then(res=>{
         dispatch({type:"USER_REGISTER_SUCCESS"})
         console.log(res)
@@ -18,7 +19,7 @@ export const registerNewUser = (user)=>dispatch=>{
 export const loginUser = (user)=>dispatch=>{
     dispatch({type:"USER_LOGIN_REQUEST"})
 
-    axios.post("/api/users/login", user)
+    axios.post(`${URL}/api/users/login`, user)
     .then(res=>{
         dispatch({type:"USER_LOGIN_SUCCESS"})
         localStorage.setItem("currentUser",JSON.stringify(res.data))
@@ -42,7 +43,7 @@ export const logoutUser = ()=>dispatch=>{
 export const updateUser = (userid, updatedUser)=>dispatch=>{
     dispatch({type:"USER_UPDATE_REQUEST"})
 
-    axios.post("/api/users/update", {userid:userid, updatedUser : updatedUser } )
+    axios.post(`${URL}/api/users/update`, {userid:userid, updatedUser : updatedUser } )
     .then(res=>{
         dispatch({type:"USER_UPDATE_SUCCESS"})
         console.log(res)
@@ -56,7 +57,7 @@ export const updateUser = (userid, updatedUser)=>dispatch=>{
 export const getAllUsers = ()=> dispatch=>{
     dispatch({type: "GET_ALLUSERS_REQUEST"})
 
-    axios.get("/api/users/getallusers").then(res=>{
+    axios.get(`${URL}/api/users/getallusers`).then(res=>{
         dispatch({type: "GET_ALLUSERS_SUCCESS", payload : res.data})
     }).catch(err=>{
         dispatch({type: "GET_ALLUSERS_FAILED", payload : err})
@@ -67,7 +68,7 @@ export const getAllUsers = ()=> dispatch=>{
 export const deleteUser = (userid)=> dispatch=>{
     dispatch({type: "DELETE_USER_REQUEST"})
 
-    axios.post("/api/users/deleteuser", {userid}).then(res=>{
+    axios.post(`${URL}/api/users/deleteuser`, {userid}).then(res=>{
         dispatch({type: "DELETE_USER_SUCCESS", payload : res.data})
         alert("Usuario eliminado con exito")
         window.location.reload()

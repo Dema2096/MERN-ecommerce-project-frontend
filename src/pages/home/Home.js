@@ -7,6 +7,7 @@ import { getAllProducts } from "../../actions/productActions"
 import Loader from '../../components/Loader'
 import Error from '../../components/Error'
 import Filter from '../../components/Filter'
+import { URL } from '../../App'
 
 function Home() {
     const getallproductsstate = useSelector(state => state.getAllProductsReducer)
@@ -18,6 +19,7 @@ function Home() {
         dispatch(getAllProducts())
     }, [])
 
+    
 
 
     return (

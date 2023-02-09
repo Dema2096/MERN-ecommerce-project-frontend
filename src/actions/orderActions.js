@@ -1,4 +1,5 @@
 import axios, { Axios } from "axios"
+import { URL } from "../App"
 
 export const placeOrder = (token,subtotal)=> (dispatch, getState)=>{
     dispatch({type:"PLACE_ORDER_REQUEST"})
@@ -20,7 +21,7 @@ export const placeOrder = (token,subtotal)=> (dispatch, getState)=>{
 
 
 
-    axios.post("/api/orders/placeorder", {token, subtotal, currentUser, cartItems}).then(res=>{
+    axios.post(`${URL}/api/orders/placeorder`, {token, subtotal, currentUser, cartItems}).then(res=>{
         dispatch({type:"PLACE_ORDER_SUCCESS"})
         console.log(res)
     }).catch(err=>{
@@ -34,7 +35,7 @@ export const getOrdersByuserId = ()=>(dispatch,getState)=>{
 
     dispatch({type:'GET_ORDERSBYUSERID_REQUEST'})
 
-    axios.post('/api/orders/getordersbyuserid', {userId:userId} ).then(res=>{
+    axios.post(`${URL}/api/orders/getordersbyuserid`, {userId:userId} ).then(res=>{
     dispatch({type:'GET_ORDERSBYUSERID_SUCCESS',payload:res.data})
     console.log(res.data)
     }).catch(err=>{
@@ -48,7 +49,7 @@ export const getOrderById = (orderid)=>(dispatch,getState)=>{
 
     dispatch({type:'GET_ORDERBYID_REQUEST'})
 
-    axios.post('/api/orders/getorderbyid', {orderid:orderid} ).then(res=>{
+    axios.post(`${URL}/api/orders/getorderbyid`, {orderid:orderid} ).then(res=>{
     dispatch({type:'GET_ORDERBYID_SUCCESS',payload:res.data})
     console.log(res.data)
     }).catch(err=>{
@@ -60,7 +61,7 @@ export const getAllOrders = ()=>dispatch=>{
 
     dispatch({type:'GET_ALLORDERS_REQUEST'})
 
-    axios.get('/api/orders/getallorders').then(res=>{
+    axios.get(`${URL}/api/orders/getallorders`).then(res=>{
     dispatch({type:'GET_ALLORDERS_SUCCESS',payload:res.data})
     console.log(res.data)
     }).catch(err=>{
