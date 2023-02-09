@@ -23,7 +23,14 @@ function CheckoutComponent({amount}) {
     }
 
     return (
-        <div>
+        <Error error='Actualmente la opcion de completar el pago no se encuentra disponible por problemas con Stripe, sepa disculpar' />
+    )
+}
+
+export default CheckoutComponent
+
+/*
+<div>
             {loading&&(<Loader/>)}
             {success &&(<Success success='Pago registrado con exito'/>)}
             {error && (<Error error='Algo fallo al procesar el pago' /> )}
@@ -39,8 +46,7 @@ function CheckoutComponent({amount}) {
                     <button className="   btn btn-dark mb-4" onClick={validate}>COMPLETAR COMPRA</button>
                 </div>
             </StripeCheckout>
-        </div>
-    )
-}
+        </div> 
+        */
 
-export default CheckoutComponent
+        
